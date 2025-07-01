@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/test/static/css/main.071a8524.css",
-    "main.js": "/test/static/js/main.b8d86e64.js",
-    "index.html": "/test/index.html",
-    "main.071a8524.css.map": "/test/static/css/main.071a8524.css.map",
-    "main.b8d86e64.js.map": "/test/static/js/main.b8d86e64.js.map"
+    "main.css": "/velavie/static/css/main.071a8524.css",
+    "main.js": "/velavie/static/js/main.85c9527a.js",
+    "index.html": "/velavie/index.html",
+    "main.071a8524.css.map": "/velavie/static/css/main.071a8524.css.map",
+    "main.85c9527a.js.map": "/velavie/static/js/main.85c9527a.js.map"
   },
   "entrypoints": [
     "static/css/main.071a8524.css",
-    "static/js/main.b8d86e64.js"
+    "static/js/main.85c9527a.js"
   ]
 }
