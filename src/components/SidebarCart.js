@@ -1,4 +1,4 @@
-﻿import React, { useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import styled, { keyframes, css } from "styled-components";
 import { useImagePath } from "../context/ImagePathContext";
 import { Link, useNavigate } from "react-router-dom";
