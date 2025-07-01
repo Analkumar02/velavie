@@ -620,6 +620,99 @@ const SuggestionDescription = styled.p`
   font-size: 14px;
   line-height: 1.7;
 `;
+const FaqArea = styled.div`
+  padding: 80px 0;
+  position: relative;
+  background: linear-gradient(180deg, #ffffff 0%, #f5f5f5 100%);
+  @media (max-width: 991px) {
+    padding: 40px 0;
+  }
+`;
+const FaqImage = styled.img`
+  max-width: 100%;
+  height: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  display: none;
+  z-index: 0;
+  @media (min-width: 992px) {
+    display: block;
+  }
+`;
+const FaqTitle = styled.h2`
+  text-transform: capitalize;
+  text-align: center;
+  margin-bottom: 40px;
+  @media (max-width: 767px) {
+    margin-bottom: 24px;
+  }
+`;
+const FaqContent = styled.div`
+  display: flex;
+  gap: 40px;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 1;
+  @media (max-width: 991px) {
+    flex-direction: column;
+    gap: 24px;
+  }
+`;
+
+const FaqProductImg = styled.img`
+  max-width: 550px;
+  height: auto;
+  width: 100%;
+  border-radius: 10px;
+  z-index: 2;
+`;
+const FaqBox = styled.div`
+  max-width: 700px;
+`;
+
+// FAQ styled components (no css on h4 or p)
+const FaqItem = styled.div`
+  border-bottom: 1px solid ${({ theme }) => theme.colors.gray_lite};
+  overflow: hidden;
+`;
+const FaqHeader = styled.h4`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  margin: 0;
+  padding: 22px 0 22px 0;
+  color: ${({ theme }) => theme.colors.body};
+  background: transparent;
+  user-select: none;
+  transition: background 0.2s;
+`;
+const FaqIcon = styled.span`
+  display: flex;
+  align-items: center;
+  margin-left: 16px;
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  svg {
+    font-size: 1.5em;
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    color: ${({ theme }) => theme.colors.body};
+  }
+`;
+const FaqBody = styled.div`
+  height: ${({ expanded, $height }) => (expanded ? `${$height}px` : "0")};
+  opacity: ${({ expanded }) => (expanded ? 1 : 0)};
+  transition: height 0.45s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s;
+  overflow: hidden;
+  padding: 0;
+`;
+const FaqBodyContent = styled.div`
+  transition: padding-bottom 0.3s;
+  p {
+    padding-bottom: ${({ expanded }) => (expanded ? "18px" : "0")};
+  }
+`;
 
 const Product = () => {
   const { id } = useParams();
@@ -631,7 +724,24 @@ const Product = () => {
   const [selectedDelivery, setSelectedDelivery] = useState(0);
   const [loadingQty, setLoadingQty] = useState(false);
   const [loadingCart, setLoadingCart] = useState(false);
+  const [faqOpen, setFaqOpen] = useState(null);
+  const [faqHeights, setFaqHeights] = useState([]);
+  const faqRefs = useRef([]);
   const swiperRef = useRef(null);
+
+  // Ensure refs array is always correct length
+  useEffect(() => {
+    if (product.faq) {
+      faqRefs.current = Array(product.faq.length)
+        .fill()
+        .map((_, i) => faqRefs.current[i] || React.createRef());
+    }
+  }, [product.faq]);
+
+  // Update heights when FAQ open state or FAQ data changes
+  useEffect(() => {
+    setFaqHeights(faqRefs.current.map((ref) => ref.current?.scrollHeight || 0));
+  }, [faqOpen, product.faq]);
 
   const handleSlideChange = useCallback((swiper) => {
     setSelectedImage(swiper.activeIndex);
@@ -1098,6 +1208,69 @@ const Product = () => {
         </ProductWrapper>
       </Container>
       <FeatureIcons />
+      <FaqArea>
+        <FaqImage
+          src={`${imagePath}faq-img.svg`}
+          alt="FAQ Background"
+          loading="lazy"
+        />
+        <Container>
+          <FaqTitle>How Sugar Shift Works</FaqTitle>
+          <FaqContent>
+            <FaqProductImg
+              src={`${imagePath}${product.slideshowImages[3]}`}
+              srcSet={
+                product.slideshowImages.length >= 6
+                  ? `
+                              ${imagePath}${product.slideshowImages[3]} 1x,
+                              ${imagePath}${product.slideshowImages[4]} 2x,
+                              ${imagePath}${product.slideshowImages[5]} 3x
+                            `
+                  : product.slideshowImages.length === 5
+                  ? `
+                              ${imagePath}${product.slideshowImages[3]} 1x,
+                              ${imagePath}${product.slideshowImages[4]} 2x
+                            `
+                  : `${imagePath}${product.slideshowImages[3]} 1x`
+              }
+              alt={`${product.productName} - Alternative view`}
+              loading="lazy"
+            />
+            <FaqBox>
+              {(product.faq || []).map((faq, idx) => (
+                <FaqItem key={idx}>
+                  <FaqHeader
+                    onClick={() => setFaqOpen(faqOpen === idx ? null : idx)}
+                    aria-expanded={faqOpen === idx}
+                  >
+                    {faq.question}
+                    <FaqIcon
+                      style={{
+                        transform:
+                          faqOpen === idx ? "rotate(180deg)" : "rotate(0deg)",
+                      }}
+                    >
+                      <Icon icon={faqOpen === idx ? "mdi:minus" : "mdi:plus"} />
+                    </FaqIcon>
+                  </FaqHeader>
+                  <FaqBody
+                    expanded={faqOpen === idx}
+                    $height={faqOpen === idx ? faqHeights[idx] || 0 : 0}
+                  >
+                    {/* Always render FaqBodyContent and attach ref correctly */}
+                    <FaqBodyContent
+                      expanded={faqOpen === idx}
+                      ref={faqRefs.current[idx]}
+                    >
+                      <p dangerouslySetInnerHTML={{ __html: faq.answer }} />
+                    </FaqBodyContent>
+                  </FaqBody>
+                </FaqItem>
+              ))}
+            </FaqBox>
+          </FaqContent>
+        </Container>
+      </FaqArea>
       <ProductSlider excludeId={product.id} />
     </>
   );

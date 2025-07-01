@@ -126,6 +126,12 @@ const Header = () => {
                 style={{ color: "#1d3e57", cursor: "pointer" }}
                 onClick={() => setSearchOpen(true)}
               />
+              <Icon
+                icon="lucide:circle-user-round"
+                width="24"
+                height="24"
+                style={{ color: "#1d3e57", cursor: "pointer" }}
+              />
               <CartIconWrapper
                 onClick={toggleCart}
                 style={{ cursor: "pointer" }}
@@ -178,6 +184,12 @@ const Header = () => {
                 height="24"
                 style={{ color: "#1d3e57", cursor: "pointer" }}
                 onClick={() => setSearchOpen(true)}
+              />
+              <Icon
+                icon="lucide:circle-user-round"
+                width="24"
+                height="24"
+                style={{ color: "#1d3e57", cursor: "pointer" }}
               />
               <CartIconWrapperMob
                 onClick={toggleCart}
