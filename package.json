@@ -1,6 +1,7 @@
 {
   "name": "velavie",
   "version": "0.1.0",
+  "homepage": "https://Analkumar02.github.io/velavie",
   "private": true,
   "dependencies": {
     "@testing-library/dom": "^10.4.0",
