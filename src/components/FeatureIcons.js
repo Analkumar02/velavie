@@ -31,6 +31,7 @@ const FeatureIcon = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-self: center;
   justify-content: space-between;
   gap: 10px;
   max-width: 170px;

@@ -396,8 +396,17 @@ function ThankYou() {
     localStorage.removeItem("cartItems");
     localStorage.removeItem("orderData");
     localStorage.removeItem("checkoutInProgress");
+    localStorage.removeItem("cartCount_guest");
+    localStorage.removeItem("cartCount");
+    localStorage.removeItem("checkoutFormData");
+    localStorage.removeItem("subscriptionUpgraded");
+    localStorage.removeItem("subscriptionSavings");
     sessionStorage.removeItem("cartItems");
     sessionStorage.removeItem("checkoutInProgress");
+    // Force update cart count in header
+    window.dispatchEvent(
+      new CustomEvent("cartCountUpdate", { detail: { cartCount: 0 } })
+    );
   }, []);
 
   return (

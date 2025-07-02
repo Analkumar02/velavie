@@ -1,7 +1,13 @@
+import React from "react";
 import { ThemeProvider } from "styled-components";
 import { theme } from "./styles/theme";
 import GlobalStyle from "./styles/globalStyles";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+} from "react-router-dom";
 import Header from "./components/Header";
 import Footer from "./components/footer";
 
@@ -10,6 +16,14 @@ import Shop from "./pages/Shop";
 import Product from "./pages/Product";
 import CheckOut from "./pages/CheckOut";
 import ThankYou from "./pages/ThankYou";
+
+function ScrollToTop() {
+  const location = useLocation();
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
+  return null;
+}
 
 function App() {
   return (
@@ -22,6 +36,7 @@ function App() {
             v7_relativeSplatPath: true,
           }}
         >
+          <ScrollToTop />
           <Header />
           <Routes>
             <Route path="/" element={<Home />} />

@@ -399,13 +399,13 @@ const PurchaseRadioCircle = styled.span`
   }
 `;
 const PurchaseOptionCollapse = styled.div.withConfig({
-  shouldForwardProp: (prop) => prop !== "expanded",
+  shouldForwardProp: (prop) => prop !== "$expanded",
 })`
-  max-height: ${({ expanded }) => (expanded ? "1000px" : "0")};
+  max-height: ${({ $expanded }) => ($expanded ? "1000px" : "0")};
   overflow: hidden;
   transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-  opacity: ${({ expanded }) => (expanded ? 1 : 0)};
-  pointer-events: ${({ expanded }) => (expanded ? "auto" : "none")};
+  opacity: ${({ $expanded }) => ($expanded ? 1 : 0)};
+  pointer-events: ${({ $expanded }) => ($expanded ? "auto" : "none")};
 `;
 const OptionBenefits = styled.ul`
   margin: 0.5rem 0 1.5rem 0;
@@ -701,8 +701,8 @@ const FaqIcon = styled.span`
   }
 `;
 const FaqBody = styled.div`
-  height: ${({ expanded, $height }) => (expanded ? `${$height}px` : "0")};
-  opacity: ${({ expanded }) => (expanded ? 1 : 0)};
+  height: ${({ $expanded, $height }) => ($expanded ? `${$height}px` : "0")};
+  opacity: ${({ $expanded }) => ($expanded ? 1 : 0)};
   transition: height 0.45s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s;
   overflow: hidden;
   padding: 0;
@@ -710,7 +710,7 @@ const FaqBody = styled.div`
 const FaqBodyContent = styled.div`
   transition: padding-bottom 0.3s;
   p {
-    padding-bottom: ${({ expanded }) => (expanded ? "18px" : "0")};
+    padding-bottom: ${({ $expanded }) => ($expanded ? "18px" : "0")};
   }
 `;
 
@@ -1060,7 +1060,7 @@ const Product = () => {
                     </span>
                   </SaveTagBox>
                 </PurchaseOptionHeader>
-                <PurchaseOptionCollapse expanded={option === "subscribe"}>
+                <PurchaseOptionCollapse $expanded={option === "subscribe"}>
                   <OptionBenefits>
                     {product.pricing.subscribeAndSave.benefits.map((b, i) => (
                       <li key={i}>
@@ -1254,12 +1254,12 @@ const Product = () => {
                     </FaqIcon>
                   </FaqHeader>
                   <FaqBody
-                    expanded={faqOpen === idx}
+                    $expanded={faqOpen === idx}
                     $height={faqOpen === idx ? faqHeights[idx] || 0 : 0}
                   >
                     {/* Always render FaqBodyContent and attach ref correctly */}
                     <FaqBodyContent
-                      expanded={faqOpen === idx}
+                      $expanded={faqOpen === idx}
                       ref={faqRefs.current[idx]}
                     >
                       <p dangerouslySetInnerHTML={{ __html: faq.answer }} />

@@ -1,12 +1,14 @@
 import styled from "styled-components";
-import Container from "../components/Container";
 import { BlueButton, WhiteButton } from "../components/HeaderStyled";
 import { useImagePath } from "../context/ImagePathContext";
+import { useNavigate } from "react-router-dom";
+
+import Container from "../components/Container";
 import FeatureIcons from "../components/FeatureIcons";
 import PerfectPeace from "../components/PerfectPeace";
 import ProductSlider from "../components/ProductSlider";
 import AppDownload from "../components/AppDownload";
-import { useNavigate } from "react-router-dom";
+import BenefitSwiper from "../components/BenefitSwiper";
 
 const HeroHome = styled.div``;
 const HeroBox = styled.div`
@@ -296,6 +298,43 @@ const FutureItem = styled.div`
   }
 `;
 
+const BenefitsArea = styled.div`
+  padding: 80px 0;
+  @media (max-width: 991px) {
+    padding: 40px 0;
+  }
+`;
+const BenefitsHeadingBox = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 40px;
+  @media (max-width: 767px) {
+    flex-direction: column;
+    margin-bottom: 24px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 20px;
+  }
+`;
+const TitleBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  p {
+    color: ${({ theme }) => theme.colors.primary};
+    text-transform: capitalize;
+  }
+  h2 {
+    text-transform: capitalize;
+  }
+  @media (max-width: 767px) {
+    gap: 5px;
+  }
+`;
+
+const BenefitSlider = styled.div``;
+
 const Home = () => {
   const imagePath = useImagePath();
   const navigate = useNavigate();
@@ -360,6 +399,20 @@ const Home = () => {
         </Container>
       </HeroHome>
       <FeatureIcons />
+      <BenefitsArea>
+        <Container>
+          <BenefitsHeadingBox>
+            <TitleBox>
+              <p>shop by benefit</p>
+              <h2>Find What Fits Your Needs</h2>
+            </TitleBox>
+            <BlueButton onClick={() => navigate("/shop")}>shop now</BlueButton>
+          </BenefitsHeadingBox>
+          <BenefitSlider>
+            <BenefitSwiper />
+          </BenefitSlider>
+        </Container>
+      </BenefitsArea>
       <PerfectPeace />
       <FounderArea>
         <FounderImg
