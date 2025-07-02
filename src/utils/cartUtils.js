@@ -41,7 +41,7 @@ export const updateCartWithDelay = async (
     );
 
     setLoadingMessage("Cart updated successfully!");
-    await new Promise((resolve) => setTimeout(resolve, 500));
+    await new Promise((resolve) => setTimeout(resolve, 300));
 
     return updatedCartItems;
   } catch (error) {
