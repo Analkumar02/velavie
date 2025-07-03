@@ -184,7 +184,7 @@ const BenefitSwiper = () => {
               alt="Heart Health"
             />
             <ProductThumb
-              src={imagePath + "benefit-thumb1.png"}
+              src={imagePath + "benefit-thumb4.png"}
               alt="Heart Health"
             />
           </SlideInner>

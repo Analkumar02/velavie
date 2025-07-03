@@ -734,7 +734,7 @@ export const BlueButton = styled.button`
   font-size: clamp(0.875rem, 0.7943rem + 0.3445vw, 1.125rem);
   font-weight: 600;
   padding: 20px 40px;
-  border-radius: 12px;
+  border-radius: 10px;
   text-transform: capitalize;
   text-decoration: none;
   border: none;
@@ -787,7 +787,7 @@ export const BlueButton = styled.button`
   @media (max-width: 991px) {
     padding: 12px 20px;
     font-size: 14px;
-    border-radius: 10px;
+    border-radius: 5px;
   }
 `;
 
