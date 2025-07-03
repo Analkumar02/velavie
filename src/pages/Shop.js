@@ -140,7 +140,11 @@ function Shop() {
             <HeroContent>
               <HeroTextarea>
                 <RatingText>
-                  <img src={`${imagePath}5star.svg`} alt="stars" />
+                  <img
+                    src={`${imagePath}5star.svg`}
+                    alt="stars"
+                    loading="lazy"
+                  />
                   <span>Over 500+ 5-Star Reviews</span>
                 </RatingText>
                 <h1>
@@ -165,6 +169,7 @@ function Shop() {
                   ${imagePath}shophero@3x.png 3x
                 `}
                 alt="Shop Hero Product"
+                loading="lazy"
               />
             </HeroImg>
           </ShopHeroBox>
@@ -180,19 +185,35 @@ function Shop() {
           </ShopIconTitle>
           <ShopIconBox>
             <ShopIcon>
-              <img src={`${imagePath}shopicon1.svg`} alt="Shop 1" />
+              <img
+                src={`${imagePath}shopicon1.svg`}
+                alt="Shop 1"
+                loading="lazy"
+              />
               <p>Gluten-free</p>
             </ShopIcon>
             <ShopIcon>
-              <img src={`${imagePath}shopicon2.svg`} alt="Shop 2" />
+              <img
+                src={`${imagePath}shopicon2.svg`}
+                alt="Shop 2"
+                loading="lazy"
+              />
               <p>Dairy-free</p>
             </ShopIcon>
             <ShopIcon>
-              <img src={`${imagePath}shopicon3.svg`} alt="Shop 3" />
+              <img
+                src={`${imagePath}shopicon3.svg`}
+                alt="Shop 3"
+                loading="lazy"
+              />
               <p>Soy-free</p>
             </ShopIcon>
             <ShopIcon>
-              <img src={`${imagePath}shopicon4.svg`} alt="Shop 4" />
+              <img
+                src={`${imagePath}shopicon4.svg`}
+                alt="Shop 4"
+                loading="lazy"
+              />
               <p>Non-GMO</p>
             </ShopIcon>
           </ShopIconBox>

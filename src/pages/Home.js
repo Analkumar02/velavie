@@ -1,3 +1,4 @@
+import React from "react";
 import styled from "styled-components";
 import { BlueButton, WhiteButton } from "../components/HeaderStyled";
 import { useImagePath } from "../context/ImagePathContext";
@@ -9,6 +10,7 @@ import PerfectPeace from "../components/PerfectPeace";
 import ProductSlider from "../components/ProductSlider";
 import AppDownload from "../components/AppDownload";
 import BenefitSwiper from "../components/BenefitSwiper";
+import TasteOnionSlider from "../components/TestimonialArea";
 
 const HeroHome = styled.div``;
 const HeroBox = styled.div`
@@ -154,6 +156,7 @@ const TitleArea = styled.div`
   flex-direction: column;
   gap: 20px;
   align-items: center;
+  text-transform: capitalize;
   @media (max-width: 991px) {
     text-align: center;
   }
@@ -299,9 +302,9 @@ const FutureItem = styled.div`
 `;
 
 const BenefitsArea = styled.div`
-  padding: 80px 0;
+  padding: 80px 0 40px;
   @media (max-width: 991px) {
-    padding: 40px 0;
+    padding: 40px 0 20px;
   }
 `;
 const BenefitsHeadingBox = styled.div`
@@ -332,12 +335,71 @@ const TitleBox = styled.div`
     gap: 5px;
   }
 `;
-
 const BenefitSlider = styled.div``;
+
+const TestimonialsArea = styled.div`
+  padding: 80px 0;
+  background: ${({ theme }) => theme.colors.white_lite};
+  @media (max-width: 991px) {
+    padding: 40px 0;
+  }
+`;
 
 const Home = () => {
   const imagePath = useImagePath();
   const navigate = useNavigate();
+
+  // Testimonial data (add more slides as needed)
+  const testimonials = [
+    {
+      userImg: `${imagePath}user1.png`,
+      userImgSet: `\
+        ${imagePath}user1.png 1x,\
+        ${imagePath}user1@2x.png 2x,\
+        ${imagePath}user1@3x.png 3x\
+      `,
+      name: "Julia Sanson",
+      text: "I bought Sugar Shift on a whim, not expecting much. But wow—my mood, cravings, and bathroom habits have all improved. This is now a must-have in my supplement stack.",
+      productThumb: `${imagePath}product1-thumbnail.png`,
+      productLink: "/product/1",
+    },
+    {
+      userImg: `${imagePath}user2.png`,
+      userImgSet: `\
+        ${imagePath}user2.png 1x,\
+        ${imagePath}user2@2x.png 2x,\
+        ${imagePath}user2@3x.png 3x\
+      `,
+      name: "Lydia Jones",
+      text: "Usually I catch every bug my kids bring home. Since starting Ideal Immunity, I’ve stayed healthy—even through allergy season. Definitely helps boost resilience.",
+      productThumb: `${imagePath}product5-thumbnail.png`,
+      productLink: "/product/5",
+    },
+    {
+      userImg: `${imagePath}user3.png`,
+      userImgSet: `\
+        ${imagePath}user3.png 1x,\
+        ${imagePath}user3@2x.png 2x,\
+        ${imagePath}user3@3x.png 3x\
+      `,
+      name: "Lucy Brown",
+      text: "After a long round of antibiotics, my gut was a mess. This helped reset everything within a couple weeks. No more weird stomach cramps or fatigue.",
+      productThumb: `${imagePath}product3-thumbnail.png`,
+      productLink: "/product/3",
+    },
+    {
+      userImg: `${imagePath}user4.png`,
+      userImgSet: `\
+        ${imagePath}user4.png 1x,\
+        ${imagePath}user4@2x.png 2x,\
+        ${imagePath}user4@3x.png 3x\
+      `,
+      name: "John Craven",
+      text: "I was skeptical, but after two months, my doctor commented on my improved blood pressure. I also have more stamina on bike rides. This is staying in my routine.",
+      productThumb: `${imagePath}product4-thumbnail.png`,
+      productLink: "/product/4",
+    },
+  ];
 
   const handleShopNowClick = () => {
     navigate("/shop");
@@ -377,11 +439,11 @@ const Home = () => {
                 </WhiteButton>
               </HeroBtnBox>
               <HeroBadges>
-                <img src={`${imagePath}heroicon1.svg`} alt="" />
-                <img src={`${imagePath}heroicon2.svg`} alt="" />
-                <img src={`${imagePath}heroicon3.svg`} alt="" />
-                <img src={`${imagePath}heroicon4.svg`} alt="" />
-                <img src={`${imagePath}heroicon5.svg`} alt="" />
+                <img src={`${imagePath}heroicon1.svg`} alt="" loading="lazy" />
+                <img src={`${imagePath}heroicon2.svg`} alt="" loading="lazy" />
+                <img src={`${imagePath}heroicon3.svg`} alt="" loading="lazy" />
+                <img src={`${imagePath}heroicon4.svg`} alt="" loading="lazy" />
+                <img src={`${imagePath}heroicon5.svg`} alt="" loading="lazy" />
               </HeroBadges>
             </HeroContent>
             <HeroImg>
@@ -393,6 +455,7 @@ const Home = () => {
                   ${imagePath}hero-pr1@3x.png 3x
                 `}
                 alt="Hero Product"
+                loading="lazy"
               />
             </HeroImg>
           </HeroBox>
@@ -423,6 +486,7 @@ const Home = () => {
                   ${imagePath}founder@3x.png 3x
                 `}
           alt="Founder Lili Hung"
+          loading="lazy"
         />
         <FounderText>
           <TextContent>
@@ -451,6 +515,7 @@ const Home = () => {
                   ${imagePath}leaf@3x.png 3x
                 `}
           alt="Founder Lili Hung"
+          loading="lazy"
         />
       </FounderArea>
       <WhyUsArea>
@@ -467,7 +532,7 @@ const Home = () => {
           <WhyUsBox>
             <IconColLeft>
               <IconBox>
-                <img src={`${imagePath}icon1.png`} alt="Icon" />
+                <img src={`${imagePath}icon1.png`} alt="Icon" loading="lazy" />
                 <p>Innovating with Purpose-First Principles</p>
                 <span>
                   Velalvie leads the way with the first probiotics designed
@@ -476,7 +541,7 @@ const Home = () => {
                 </span>
               </IconBox>
               <IconBox>
-                <img src={`${imagePath}icon2.png`} alt="Icon" />
+                <img src={`${imagePath}icon2.png`} alt="Icon" loading="lazy" />
                 <p>Proprietary Probiotic Formulations</p>
                 <span>
                   Velalvie’s best-selling Sugar Shift is uniquely patented—a
@@ -485,7 +550,7 @@ const Home = () => {
                 </span>
               </IconBox>
               <IconBox>
-                <img src={`${imagePath}icon3.png`} alt="Icon" />
+                <img src={`${imagePath}icon3.png`} alt="Icon" loading="lazy" />
                 <p>Clinically Distinct and Patented Strains</p>
                 <span>
                   Every Velalvie formula is powered by one-of-a-kind probiotic
@@ -503,6 +568,7 @@ const Home = () => {
                   ${imagePath}whyus@3x.png 3x
                 `}
                 alt="Why Velavie is Better"
+                loading="lazy"
               />
               <BlueButton
                 style={{ maxWidth: "300px", width: "100%" }}
@@ -513,7 +579,7 @@ const Home = () => {
             </WhyUsImgBox>
             <IconColRight>
               <IconBox>
-                <img src={`${imagePath}icon4.png`} alt="Icon" />
+                <img src={`${imagePath}icon4.png`} alt="Icon" loading="lazy" />
                 <p>Breakthrough in Glyphosate Degradation</p>
                 <span>
                   At Velalvie, every formula includes a unique strain that
@@ -522,7 +588,7 @@ const Home = () => {
                 </span>
               </IconBox>
               <IconBox>
-                <img src={`${imagePath}icon5.png`} alt="Icon" />
+                <img src={`${imagePath}icon5.png`} alt="Icon" loading="lazy" />
                 <p>Where Care Meets Effective Solutions</p>
                 <span>
                   Beyond Sugar Shift, Velalvie offers a complete range of gut
@@ -531,7 +597,7 @@ const Home = () => {
                 </span>
               </IconBox>
               <IconBox>
-                <img src={`${imagePath}icon6.png`} alt="Icon" />
+                <img src={`${imagePath}icon6.png`} alt="Icon" loading="lazy" />
                 <p>Fermented Food Synergy Encapsulated</p>
                 <span>
                   Inspired by fermented foods, our probiotics work together to
@@ -551,7 +617,11 @@ const Home = () => {
           </TitleArea>
           <FutureBox>
             <FutureItem>
-              <img src={`${imagePath}future1.png`} alt="Future Icon" />
+              <img
+                src={`${imagePath}future1.png`}
+                alt="Future Icon"
+                loading="lazy"
+              />
               <h4>Continued Benefits</h4>
               <p>
                 Consistent probiotic use over time supports stronger immunity,
@@ -559,7 +629,11 @@ const Home = () => {
               </p>
             </FutureItem>
             <FutureItem>
-              <img src={`${imagePath}future2.png`} alt="Future Icon" />
+              <img
+                src={`${imagePath}future2.png`}
+                alt="Future Icon"
+                loading="lazy"
+              />
               <h4>Explore More Velavie Formulas</h4>
               <p>
                 Products like Simple Slumber and Antibiotic Antidote are
@@ -568,7 +642,11 @@ const Home = () => {
               </p>
             </FutureItem>
             <FutureItem>
-              <img src={`${imagePath}future3.png`} alt="Future Icon" />
+              <img
+                src={`${imagePath}future3.png`}
+                alt="Future Icon"
+                loading="lazy"
+              />
               <h4>Balance Starts Daily</h4>
               <p>
                 For holistic health, pair probiotics with a balanced diet,
@@ -578,6 +656,14 @@ const Home = () => {
           </FutureBox>
         </Container>
       </FutureArea>
+      <TestimonialsArea>
+        <Container>
+          <TitleArea>
+            <h2>What Customers Are Saying</h2>
+          </TitleArea>
+          <TasteOnionSlider testimonials={testimonials} imagePath={imagePath} />
+        </Container>
+      </TestimonialsArea>
       <AppDownload />
     </>
   );

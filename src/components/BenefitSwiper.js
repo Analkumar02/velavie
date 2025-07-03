@@ -95,10 +95,12 @@ const BenefitSwiper = () => {
               }
               sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 25vw"
               alt="Gut Health"
+              loading="lazy"
             />
             <ProductThumb
               src={imagePath + "benefit-thumb1.png"}
               alt="Sugar Shift"
+              loading="lazy"
             />
           </SlideInner>
           <SlideTitle>Gut Health</SlideTitle>
@@ -124,10 +126,12 @@ const BenefitSwiper = () => {
               }
               sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 25vw"
               alt="Sleep Improvement"
+              loading="lazy"
             />
             <ProductThumb
               src={imagePath + "benefit-thumb2.png"}
               alt="Sleep Improvement"
+              loading="lazy"
             />
           </SlideInner>
           <SlideTitle>Sleep Improvement</SlideTitle>
@@ -153,10 +157,12 @@ const BenefitSwiper = () => {
               }
               sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 25vw"
               alt="Post Antibiotics"
+              loading="lazy"
             />
             <ProductThumb
               src={imagePath + "benefit-thumb3.png"}
               alt="Post Antibiotics"
+              loading="lazy"
             />
           </SlideInner>
           <SlideTitle>Post Antibiotics</SlideTitle>
@@ -182,10 +188,12 @@ const BenefitSwiper = () => {
               }
               sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 25vw"
               alt="Heart Health"
+              loading="lazy"
             />
             <ProductThumb
               src={imagePath + "benefit-thumb4.png"}
               alt="Heart Health"
+              loading="lazy"
             />
           </SlideInner>
           <SlideTitle>Heart Health</SlideTitle>
@@ -211,10 +219,12 @@ const BenefitSwiper = () => {
               }
               sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 25vw"
               alt="Immune Health"
+              loading="lazy"
             />
             <ProductThumb
               src={imagePath + "benefit-thumb5.png"}
               alt="Immune Health"
+              loading="lazy"
             />
           </SlideInner>
           <SlideTitle>Immune Health</SlideTitle>

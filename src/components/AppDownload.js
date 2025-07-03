@@ -82,8 +82,16 @@ const AppDownload = () => {
               <li>Stay informed. Stay empowered.</li>
             </ul>
             <DownloadBtn>
-              <img src={`${imagePath}playstore.png`} alt="Playstore" />
-              <img src={`${imagePath}appstore.png`} alt="Appstore" />
+              <img
+                src={`${imagePath}playstore.png`}
+                alt="Playstore"
+                loading="lazy"
+              />
+              <img
+                src={`${imagePath}appstore.png`}
+                alt="Appstore"
+                loading="lazy"
+              />
             </DownloadBtn>
           </ContentBox>
           <MobileAppImg

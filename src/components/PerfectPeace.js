@@ -175,6 +175,7 @@ const PerfectPeace = () => {
                   ${imagePath}perfectpeace@3x.png 3x
                 `}
             alt="Perfect Peace"
+            loading="lazy"
           />
         </PerfectPeaceContent>
       </PerfectPeaceWrapper>

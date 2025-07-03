@@ -138,7 +138,7 @@ const OrderItemComponent = ({ item, imagePath, onRemove, couponApplied }) => {
   const price = hasDiscount ? item.price * 0.9 : item.price;
   const totalPrice = price * (item.quantity || 1);
 
-  const thumbnailSrc = item.thumbnail || "product-default.png";
+  const thumbnailSrc = item.thumbnail || "product-default.webp";
 
   return (
     <OrderItem>
@@ -146,6 +146,7 @@ const OrderItemComponent = ({ item, imagePath, onRemove, couponApplied }) => {
         <ItemImage
           src={`${imagePath || ""}${thumbnailSrc}`}
           alt={item.productName || "Product"}
+          loading="lazy"
           onError={(e) => {
             e.target.onerror = null;
             e.target.src = `${imagePath || ""}product-default.png`;

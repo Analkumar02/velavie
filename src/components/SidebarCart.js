@@ -1272,11 +1272,23 @@ const SidebarCart = ({ isVisible, onClose, onCartUpdate }) => {
             <CartHead>
               <IconBox>
                 <ShipStep>
-                  <img src={freeShipIcon} alt="" width={28} height={28} />
+                  <img
+                    src={freeShipIcon}
+                    alt=""
+                    width={28}
+                    height={28}
+                    loading="lazy"
+                  />
                   <p>FREE Standard Shipping</p>
                 </ShipStep>
                 <ShipStep>
-                  <img src={fastShipIcon} alt="" width={28} height={28} />
+                  <img
+                    src={fastShipIcon}
+                    alt=""
+                    width={28}
+                    height={28}
+                    loading="lazy"
+                  />
                   <p>FREE 2-day Shipping</p>
                 </ShipStep>
               </IconBox>
@@ -1307,6 +1319,7 @@ const SidebarCart = ({ isVisible, onClose, onCartUpdate }) => {
                               <img
                                 src={`${imagePath}${item.thumbnail}`}
                                 alt={item.productName}
+                                loading="lazy"
                               />
                             </PrImg>
                             <PrTextBox>
@@ -1546,6 +1559,7 @@ const SidebarCart = ({ isVisible, onClose, onCartUpdate }) => {
                             <img
                               src={`${imagePath}${product.thumbnail}`}
                               alt={product.productName}
+                              loading="lazy"
                             />
                           </SuggestionImage>
                           <SuggestionName>{product.productName}</SuggestionName>

@@ -274,7 +274,7 @@ const Footer = () => {
           </TitleArea>
           <CtaIconBox>
             <IconBox>
-              <img src={`${imagePath}chat.svg`} alt="Chat" />
+              <img src={`${imagePath}chat.svg`} alt="Chat" loading="lazy" />
               <h4>chat with us</h4>
               <p>
                 Chat with our experts in seconds.
@@ -284,7 +284,7 @@ const Footer = () => {
               <a href=" ">chat now</a>
             </IconBox>
             <IconBox>
-              <img src={`${imagePath}mail.svg`} alt="Email" />
+              <img src={`${imagePath}mail.svg`} alt="Email" loading="lazy" />
               <h4>email us</h4>
               <p>
                 Reach out anytime we're here to help. <br /> Typical response
@@ -293,7 +293,7 @@ const Footer = () => {
               <a href="mailto:support@velavie.com">support@velavie.com</a>
             </IconBox>
             <IconBox>
-              <img src={`${imagePath}call.svg`} alt="Call" />
+              <img src={`${imagePath}call.svg`} alt="Call" loading="lazy" />
               <h4>call us</h4>
               <p>
                 Expert guidance is just a phone call away.

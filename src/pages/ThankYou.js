@@ -472,6 +472,7 @@ function ThankYou() {
                         src={getCardInfo().logo}
                         alt={getCardInfo().type}
                         style={{ width: 28, height: 18, objectFit: "contain" }}
+                        loading="lazy"
                       />
                     )}
                     {getCardInfo().type} ** {getCardInfo().last4}
@@ -492,6 +493,7 @@ function ThankYou() {
                   <ProductImg
                     src={`${imagePath}${item.thumbnail}`}
                     alt={item.productName}
+                    loading="lazy"
                   />
                   <ProductDetails>
                     <div className="name">{item.productName}</div>
@@ -601,8 +603,16 @@ function ThankYou() {
                 <li>Stay informed. Stay empowered.</li>
               </ul>
               <DownloadBtn>
-                <img src={`${imagePath}playstore.png`} alt="Playstore" />
-                <img src={`${imagePath}appstore.png`} alt="Appstore" />
+                <img
+                  src={`${imagePath}playstore.png`}
+                  alt="Playstore"
+                  loading="lazy"
+                />
+                <img
+                  src={`${imagePath}appstore.png`}
+                  alt="Appstore"
+                  loading="lazy"
+                />
               </DownloadBtn>
             </ContentBox>
           </OrderTotal>

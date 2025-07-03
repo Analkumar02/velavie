@@ -963,6 +963,7 @@ const Product = () => {
                       srcSet={getImageSrcSet(img)}
                       sizes="(max-width: 600px) 100vw, 600px"
                       alt={product.productName}
+                      loading="lazy"
                     />
                   </SwiperSlide>
                 ))}
@@ -986,6 +987,7 @@ const Product = () => {
                       alt={product.productName + " thumb"}
                       selected={selectedImage === idx}
                       onClick={() => handleThumbnailClick(idx)}
+                      loading="lazy"
                     />
                   </SwiperSlide>
                 ))}
@@ -1177,6 +1179,7 @@ const Product = () => {
                 src={`${imagePath}payment.png`}
                 srcSet={`${imagePath}payment@2x.png 2x, ${imagePath}payment@3x.png 3x`}
                 alt="Payment methods"
+                loading="lazy"
               />
             </PaymentIcons>
             <CheckoutInfoBox>
