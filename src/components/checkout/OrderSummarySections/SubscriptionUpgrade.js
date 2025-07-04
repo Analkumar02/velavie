@@ -222,9 +222,6 @@ const UndoLink = styled.button`
   }
 `;
 
-/**
- * SubscriptionUpgrade component for handling subscription upgrade functionality
- */
 const SubscriptionUpgrade = ({
   subscriptionUpgraded,
   subscriptionSavings,
@@ -238,7 +235,6 @@ const SubscriptionUpgrade = ({
   handleUpgradeToSubscription,
   handleUndoUpgrade,
 }) => {
-  // Only show upgrade success if there is at least one subscription product in the cart
   const hasSubscriptionProducts = cartItems.some(
     (item) => item.isSubscription && !item.isDemoProduct
   );

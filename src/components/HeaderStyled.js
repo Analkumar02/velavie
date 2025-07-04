@@ -868,7 +868,6 @@ export const WhiteButton = styled.button`
   }
 `;
 
-// User Dropdown Styles
 export const UserIconWrapper = styled.div`
   position: relative;
   cursor: pointer;

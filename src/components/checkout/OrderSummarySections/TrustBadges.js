@@ -17,6 +17,9 @@ const BadgesWrapper = styled.div`
   justify-content: center;
   gap: 1.5rem;
   flex-wrap: wrap;
+  @media (max-width: 767px) {
+    gap: 10px;
+  }
 `;
 
 const BadgeItem = styled.div`
@@ -38,9 +41,6 @@ const badges = [
   { id: 5, name: "Vegan Badge", filename: "badge5.svg" },
 ];
 
-/**
- * TrustBadges component displays trust badges at the bottom of the order summary
- */
 const TrustBadges = ({ imagePath }) => {
   return (
     <TrustBadgesContainer>

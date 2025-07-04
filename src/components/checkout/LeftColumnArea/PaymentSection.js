@@ -33,26 +33,17 @@ const CardFormWrapper = styled.div`
   }
 `;
 
-/**
- * Helper function to format card number with spaces
- */
 const formatCardNumber = (value) => {
   const digits = value.replace(/\D/g, "");
   return digits.replace(/(.{4})/g, "$1 ").trim();
 };
 
-/**
- * Helper function to format expiry date with slash
- */
 const formatExpiry = (value) => {
   const digits = value.replace(/\D/g, "").slice(0, 4);
   if (digits.length < 3) return digits;
   return digits.slice(0, 2) + "/" + digits.slice(2);
 };
 
-/**
- * PaymentSection component handles payment method and credit card details
- */
 const PaymentSection = ({
   formData,
   errors,
@@ -64,10 +55,8 @@ const PaymentSection = ({
   cvvMasked,
   setFormData,
 }) => {
-  // Get image path from context
   const imagePath = useImagePath();
 
-  // Payment method group
   const PaymentMethodGroup = OptionGroup;
   const PaymentOption = Option;
   const PaymentCustomRadio = CustomRadio;

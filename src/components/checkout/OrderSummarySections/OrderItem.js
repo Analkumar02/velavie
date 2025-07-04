@@ -137,7 +137,6 @@ const OrderItem = ({
                   : item.deliveryOption || "30 days"}
               </SubscriptionInfo>
             )}
-            {/* Show coupon tag for one-time purchase products when coupon is applied */}
             {couponApplied && !item.isSubscription && !item.isDemoProduct && (
               <CouponTag>
                 <Icon icon="mdi:tag" width="14" height="14" />

@@ -36,7 +36,6 @@ export const InputWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  /* Add spacing for error message, but keep input/label area compact */
   padding-bottom: 0.5rem;
 
   ${FormRow} & {
@@ -47,7 +46,6 @@ export const InputWrapper = styled.div`
 export const InputLabel = styled.label`
   position: absolute;
   left: 0.75rem;
-  /* Vertically center label based on input padding, not wrapper */
   top: 0.65rem;
   background-color: ${({ theme }) => theme.colors.white};
   padding: 0 0.25rem;
@@ -178,7 +176,6 @@ export const ButtonBase = styled.button`
   }
 `;
 
-// Option Group components (used for shipping/payment/billing options)
 export const OptionGroup = styled.div`
   border-radius: 12px;
   border: 1px solid #e0e0e0;

@@ -349,7 +349,6 @@ const Home = () => {
   const imagePath = useImagePath();
   const navigate = useNavigate();
 
-  // Testimonial data (add more slides as needed)
   const testimonials = [
     {
       userImg: `${imagePath}user1.png`,

@@ -133,23 +133,19 @@ const Spinner = styled.div`
   }
 `;
 
-/**
- * CouponSection component for handling coupon input and display
- */
 const CouponSection = ({
   formData,
   handleInputChange,
   handleCouponApply,
-  handleCouponRemove = () => {}, // Default function
+  handleCouponRemove = () => {},
   couponApplied,
   couponError,
   showCouponSuggestion,
   couponDiscount,
-  isSubscription = false, // Default value
-  couponLoading = false, // Default value
-  hasOneTimePurchaseProducts = false, // Default value
+  isSubscription = false,
+  couponLoading = false,
+  hasOneTimePurchaseProducts = false,
 }) => {
-  // Only show the coupon section if there are one-time purchase products
   if (!hasOneTimePurchaseProducts) {
     return null;
   }
@@ -180,7 +176,6 @@ const CouponSection = ({
         </CouponButton>
       </CouponBox>
 
-      {/* Show coupon success message */}
       {couponApplied && !couponError && (
         <div style={{ textAlign: "center", marginTop: "12px" }}>
           <CouponTag>
@@ -207,7 +202,6 @@ const CouponSection = ({
         </div>
       )}
 
-      {/* Show coupon error message */}
       {couponError && (
         <CouponErrorMessage>
           <Icon icon="mdi:alert-circle" width="16" height="16" />
@@ -215,7 +209,6 @@ const CouponSection = ({
         </CouponErrorMessage>
       )}
 
-      {/* Show coupon suggestion */}
       {showCouponSuggestion && !couponApplied && !isSubscription && (
         <CouponSuggestion>
           <Icon icon="mdi:lightbulb-outline" width="16" height="16" />
@@ -223,7 +216,6 @@ const CouponSection = ({
         </CouponSuggestion>
       )}
 
-      {/* Show subscription message */}
       {isSubscription && (
         <CouponErrorMessage>
           <Icon icon="mdi:information-outline" width="16" height="16" />

@@ -7,9 +7,6 @@ import {
   CustomRadio,
 } from "./FormComponents";
 
-/**
- * ShippingMethodSection component displays shipping method options
- */
 const ShippingMethodSection = ({
   formData,
   subtotal,

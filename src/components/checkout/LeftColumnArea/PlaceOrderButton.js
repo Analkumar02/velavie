@@ -6,9 +6,6 @@ const PlaceOrderButtonWrapper = styled(ButtonBase)`
   margin-top: 1.5rem;
 `;
 
-/**
- * PlaceOrderButton component for checkout form submission
- */
 const PlaceOrderButton = ({ handleFormSubmit }) => {
   return (
     <PlaceOrderButtonWrapper

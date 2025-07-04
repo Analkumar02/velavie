@@ -37,9 +37,6 @@ const OrDivider = styled.div`
   }
 `;
 
-/**
- * LeftColumnSection component for checkout page
- */
 const LeftColumnSection = ({
   formData,
   errors,

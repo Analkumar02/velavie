@@ -36,7 +36,6 @@ const Header = () => {
   const [isSticky, setIsSticky] = useState(false);
 
   useEffect(() => {
-    // Always use guest cart count key
     const cartCountKey = "cartCount_guest";
     const storedCount = localStorage.getItem(cartCountKey);
     if (storedCount) {

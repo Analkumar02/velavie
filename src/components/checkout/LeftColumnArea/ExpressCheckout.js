@@ -38,7 +38,7 @@ const ExpressText = styled.p`
 `;
 
 const ExpressCheckout = () => {
-  const imagePath = useImagePath(); // Not destructured
+  const imagePath = useImagePath();
 
   return (
     <ExpressCheckoutSection>

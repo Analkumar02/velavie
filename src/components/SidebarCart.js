@@ -7,7 +7,6 @@ import productData from "../data/product.json";
 import { SidebarLoader } from "./LoadingComponents";
 import { updateCartWithDelay, getCartKey } from "../utils/cartUtils";
 
-// Animations
 const slideIn = keyframes`
   from { transform: translateX(120%); }
   to { transform: translateX(0); }
@@ -17,7 +16,6 @@ const slideOut = keyframes`
   to { transform: translateX(120%); }
 `;
 
-// Mobile Animations
 const slideInMobile = keyframes`
   from { transform: translateY(100%); }
   to { transform: translateY(0); }
@@ -27,7 +25,6 @@ const slideOutMobile = keyframes`
   to { transform: translateY(100%); }
 `;
 
-// Styled Components for removing inline styles
 const EmptyCartMessage = styled.div`
   text-align: center;
   padding: 20px 0;
@@ -47,7 +44,6 @@ const OriginalPriceSpan = styled.span`
   margin-left: 8px;
 `;
 
-// Sidebar Wrapper
 const SidebarWrapper = styled.div.withConfig({
   shouldForwardProp: (prop) => prop !== "isVisible",
 })`
@@ -103,7 +99,6 @@ const SidebarWrapper = styled.div.withConfig({
   }
 `;
 
-// Overlay
 const Overlay = styled.div.withConfig({
   shouldForwardProp: (prop) => prop !== "isVisible",
 })`
@@ -119,7 +114,6 @@ const Overlay = styled.div.withConfig({
   pointer-events: ${({ isVisible }) => (isVisible ? "auto" : "none")};
 `;
 
-// Header
 const CartBody = styled.div`
   display: flex;
   flex-direction: column;
@@ -149,7 +143,6 @@ const CartTitle = styled.div`
   }
 `;
 
-// Progress
 const CartHead = styled.div`
   display: flex;
   flex-direction: column;
@@ -197,7 +190,6 @@ const CartHeadMsg = styled.p`
   text-align: center;
 `;
 
-// Cart Items
 const CartItems = styled.div`
   display: flex;
   flex-direction: column;
@@ -208,7 +200,7 @@ const PrBox = styled.div`
   display: flex;
   flex-direction: column;
   gap: 30px;
-  max-height: 500px;
+  max-height: 450px;
   overflow-y: auto;
   overflow-x: hidden;
   padding-right: 5px;
@@ -217,7 +209,6 @@ const PrBox = styled.div`
   padding: 12px 10px 12px 5px;
   background: ${({ theme }) => theme.colors.white};
 
-  /* Styling the scrollbar */
   &::-webkit-scrollbar {
     width: 6px;
   }
@@ -283,7 +274,6 @@ const PrText = styled.div`
   }
 `;
 
-// Quantity Box
 const QtyBox = styled.div`
   display: flex;
   align-items: center;
@@ -353,7 +343,6 @@ const PrPrice = styled.div`
   }
 `;
 
-// Footer
 const CartFooter = styled.div`
   display: flex;
   flex-direction: column;
@@ -437,8 +426,6 @@ const CheckoutBtn = styled(Link)`
     color: ${({ theme }) => theme.colors.white};
   }
 `;
-
-// Product Suggestions Styled Components
 
 const SuggestionsGrid = styled.div`
   display: grid;
@@ -629,7 +616,6 @@ const SubscriptionSavings = styled.div`
   font-weight: 500;
 `;
 
-// Better Suggestions Component
 const SuggestionsSection = styled.div`
   margin-top: 25px;
   border-top: 1px solid ${({ theme }) => theme.colors.gray_lite};
@@ -663,15 +649,12 @@ const SidebarCart = ({ isVisible, onClose, onCartUpdate }) => {
   const [loadingProductName, setLoadingProductName] = useState("");
   const [loadingAction, setLoadingAction] = useState("");
 
-  // Subscription state
   const [openSubscription, setOpenSubscription] = useState(null);
   const [openSelect, setOpenSelect] = useState(null);
   const [selectedDelivery, setSelectedDelivery] = useState({});
 
-  // Modern empty cart alert state
   const [showEmptyCartAlert, setShowEmptyCartAlert] = useState(false);
 
-  // Click outside handler for dropdowns
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (openSelect && !event.target.closest(".custom-select")) {
@@ -683,24 +666,18 @@ const SidebarCart = ({ isVisible, onClose, onCartUpdate }) => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [openSelect]);
 
-  // Function to toggle subscription option visibility
   const toggleSubscription = (itemId) => {
     setOpenSubscription(openSubscription === itemId ? null : itemId);
-    // Close select dropdown when toggling subscription visibility
     setOpenSelect(null);
   };
 
-  // Function to toggle select dropdown
   const toggleSelect = (itemId) => {
     setOpenSelect(openSelect === itemId ? null : itemId);
   };
 
-  // Helper function to update cart globally
   const updateCartGlobally = (updatedCart) => {
-    // Use per-user cart key
     const cartKey = getCartKey();
     localStorage.setItem(cartKey, JSON.stringify(updatedCart));
-    // Create and dispatch custom event for global updates
     const event = new CustomEvent("cartUpdate", {
       detail: {
         cartItems: updatedCart,
@@ -708,7 +685,6 @@ const SidebarCart = ({ isVisible, onClose, onCartUpdate }) => {
       },
     });
     window.dispatchEvent(event);
-    // Also dispatch localStorage change event for other components
     const storageEvent = new CustomEvent("localStorageChange", {
       detail: {
         key: cartKey,
@@ -718,7 +694,6 @@ const SidebarCart = ({ isVisible, onClose, onCartUpdate }) => {
     window.dispatchEvent(storageEvent);
   };
 
-  // Helper function to simulate backend processing and update cart
   const updateCartWithDelayLocal = async (
     updatedCartItems,
     message = "Updating cart...",
@@ -746,7 +721,6 @@ const SidebarCart = ({ isVisible, onClose, onCartUpdate }) => {
     }
   };
 
-  // Function to select delivery option
   const selectDeliveryOption = async (itemId, option) => {
     setSelectedDelivery({
       ...selectedDelivery,
@@ -788,7 +762,6 @@ const SidebarCart = ({ isVisible, onClose, onCartUpdate }) => {
     );
   };
 
-  // Function to remove subscription and revert to one-time purchase
   const removeSubscription = async (itemId) => {
     const item = cartItems.find((item) => item.id === itemId);
     const updatedItems = cartItems.map((cartItem) => {
@@ -820,20 +793,17 @@ const SidebarCart = ({ isVisible, onClose, onCartUpdate }) => {
     setSelectedDelivery(newSelectedDelivery);
   };
 
-  // Track visibility changes to manage animation state
   useEffect(() => {
     if (isVisible) {
       setAnimationState(true);
     } else {
-      // When closing, delay the actual state change until animation completes
       const timer = setTimeout(() => {
         setAnimationState(false);
-      }, 300); // Match this to your animation duration
+      }, 300);
       return () => clearTimeout(timer);
     }
   }, [isVisible]);
 
-  // Close on outside click
   useEffect(() => {
     if (!isVisible) return;
     const handleClick = (e) => {
@@ -845,7 +815,6 @@ const SidebarCart = ({ isVisible, onClose, onCartUpdate }) => {
     return () => document.removeEventListener("mousedown", handleClick);
   }, [isVisible, onClose]);
 
-  // Load cart items from localStorage (per user)
   useEffect(() => {
     const cartKey = getCartKey();
     const storedCart = localStorage.getItem(cartKey);
@@ -853,7 +822,6 @@ const SidebarCart = ({ isVisible, onClose, onCartUpdate }) => {
       try {
         const parsedCart = JSON.parse(storedCart);
         setCartItems(parsedCart);
-        // Calculate the initial cart count when loading from localStorage
         const initialCartCount = parsedCart.reduce(
           (total, item) => total + item.quantity,
           0
@@ -876,7 +844,6 @@ const SidebarCart = ({ isVisible, onClose, onCartUpdate }) => {
     }
   }, [isVisible, onCartUpdate]);
 
-  // Listen for localStorage changes to keep sidebar cart in sync (per user)
   useEffect(() => {
     const cartKey = getCartKey();
     const handleStorageChange = (e) => {
@@ -884,7 +851,6 @@ const SidebarCart = ({ isVisible, onClose, onCartUpdate }) => {
         try {
           const updatedCart = JSON.parse(e.newValue || "[]");
           setCartItems(updatedCart);
-          // Calculate the updated cart count
           const updatedCartCount = updatedCart.reduce(
             (total, item) => total + item.quantity,
             0
@@ -904,7 +870,6 @@ const SidebarCart = ({ isVisible, onClose, onCartUpdate }) => {
     return () => window.removeEventListener("storage", handleStorageChange);
   }, [onCartUpdate]);
 
-  // Listen for global cart updates
   useEffect(() => {
     const handleCartUpdate = (e) => {
       if (e.detail && e.detail.cartItems) {
@@ -921,7 +886,6 @@ const SidebarCart = ({ isVisible, onClose, onCartUpdate }) => {
     };
   }, [onCartUpdate]);
 
-  // Calculate totals when items change
   useEffect(() => {
     let subtotalSum = 0;
     let orgSubtotalSum = 0;
@@ -938,39 +902,30 @@ const SidebarCart = ({ isVisible, onClose, onCartUpdate }) => {
     setSubtotal(subtotalSum);
     setOrgSubtotal(orgSubtotalSum);
 
-    // Calculate total quantity of items in cart and update the header
     const totalQuantity = cartItems.reduce(
       (total, item) => total + item.quantity,
       0
     );
 
-    // Notify parent component about cart update if callback exists
     if (onCartUpdate) {
       onCartUpdate(totalQuantity);
     }
 
-    // Also store the cart count in localStorage for persisting between page loads
     const cartCountKey = getCartKey().replace("cartItems", "cartCount");
     localStorage.setItem(cartCountKey, totalQuantity.toString());
   }, [cartItems, onCartUpdate]);
 
-  // Generate random product suggestions when cart items change
   useEffect(() => {
     const generateSuggestions = () => {
-      // Get IDs of items already in the cart
       const cartItemIds = cartItems.map((item) => item.id);
 
-      // Filter out products that are already in the cart
       const availableProducts = productData.filter(
         (product) => !cartItemIds.includes(product.id)
       );
 
-      // If we have at least 2 products to suggest
       if (availableProducts.length >= 2) {
-        // Shuffle the available products
         const shuffled = [...availableProducts].sort(() => 0.5 - Math.random());
 
-        // Take the first 2 products
         const selected = shuffled.slice(0, 2).map((product) => ({
           id: product.id,
           productName: product.productName,
@@ -980,7 +935,6 @@ const SidebarCart = ({ isVisible, onClose, onCartUpdate }) => {
 
         setSuggestedProducts(selected);
       } else {
-        // Not enough products to suggest
         setSuggestedProducts([]);
       }
     };
@@ -988,7 +942,6 @@ const SidebarCart = ({ isVisible, onClose, onCartUpdate }) => {
     generateSuggestions();
   }, [cartItems]);
 
-  // Update quantity for a specific cart item (id + isSubscription + deliveryOption)
   const handleUpdateQuantity = async (
     itemId,
     isSubscription,
@@ -1042,13 +995,11 @@ const SidebarCart = ({ isVisible, onClose, onCartUpdate }) => {
   const handleCheckoutClick = (e) => {
     e.preventDefault();
 
-    // Check if cart has items
     if (cartItems.length === 0) {
       setShowEmptyCartAlert(true);
       return;
     }
 
-    // Ensure cart items are saved to both localStorage and sessionStorage before navigation
     try {
       const cartData = JSON.stringify(cartItems);
       const cartKey = getCartKey();
@@ -1056,7 +1007,6 @@ const SidebarCart = ({ isVisible, onClose, onCartUpdate }) => {
       sessionStorage.setItem("cartItems", cartData);
       sessionStorage.setItem("checkoutInProgress", "true");
 
-      // Navigate with state
       navigate("/checkout", { state: { cartItems, fromCart: true } });
     } catch (error) {
       console.error("Error saving cart to storage:", error);
@@ -1064,28 +1014,23 @@ const SidebarCart = ({ isVisible, onClose, onCartUpdate }) => {
       return;
     }
 
-    // Close the cart sidebar
     if (onClose) {
       onClose();
     }
   };
 
   const handleAddSuggestedProduct = async (productId) => {
-    // Find the product in product data
     const productToAdd = productData.find(
       (product) => product.id === productId
     );
 
     if (!productToAdd) return;
 
-    // Check if product is already in cart
     const existingProduct = cartItems.find((item) => item.id === productId);
 
     if (existingProduct) {
-      // Update quantity if already in cart
       await handleUpdateQuantity(productId, existingProduct.quantity + 1);
     } else {
-      // Create a new cart item
       const newItem = {
         id: productToAdd.id,
         productName: productToAdd.productName,
@@ -1098,7 +1043,6 @@ const SidebarCart = ({ isVisible, onClose, onCartUpdate }) => {
         thumbnail: productToAdd.thumbnail,
       };
 
-      // Add to cart
       const updatedItems = [...cartItems, newItem];
       await updateCartWithDelayLocal(
         updatedItems,
@@ -1108,7 +1052,6 @@ const SidebarCart = ({ isVisible, onClose, onCartUpdate }) => {
     }
   };
 
-  // Progress calculation: 0-50% for $0-$75, 50-100% for $75-$100
   let progress = 0;
   if (subtotal <= FREE_SHIP_THRESHOLD) {
     progress = (subtotal / FREE_SHIP_THRESHOLD) * 50;
@@ -1121,7 +1064,6 @@ const SidebarCart = ({ isVisible, onClose, onCartUpdate }) => {
   }
   progress = Math.min(progress, 100);
 
-  // Shipping icon logic
   const freeShipIcon =
     subtotal >= FREE_SHIP_THRESHOLD
       ? `${imagePath}ship-checked.svg`
@@ -1131,7 +1073,6 @@ const SidebarCart = ({ isVisible, onClose, onCartUpdate }) => {
       ? `${imagePath}ship-checked.svg`
       : `${imagePath}fast-ship.svg`;
 
-  // CartHeadMsg logic
   let cartMsg = null;
   if (subtotal < FREE_SHIP_THRESHOLD) {
     cartMsg = (
@@ -1155,11 +1096,9 @@ const SidebarCart = ({ isVisible, onClose, onCartUpdate }) => {
     );
   }
 
-  // Listen for cartOpen event to open the sidebar cart
   useEffect(() => {
     const handleCartOpen = () => {
       if (typeof onClose === "function") {
-        // If already open, close and reopen to retrigger animation
         onClose(false);
         setTimeout(() => {
           onClose(true);
@@ -1175,7 +1114,6 @@ const SidebarCart = ({ isVisible, onClose, onCartUpdate }) => {
 
   return (
     <>
-      {/* Modern empty cart alert */}
       {showEmptyCartAlert && (
         <div
           style={{
@@ -1301,7 +1239,6 @@ const SidebarCart = ({ isVisible, onClose, onCartUpdate }) => {
               <PrBox>
                 {cartItems.length > 0 ? (
                   cartItems.map((item, index) => {
-                    // Get product info for subscription options
                     const productInfo = productData.find(
                       (product) => product.id === item.id
                     );
@@ -1398,7 +1335,6 @@ const SidebarCart = ({ isVisible, onClose, onCartUpdate }) => {
                           </PrRight>
                         </PrInfo>
 
-                        {/* Subscription Option UI */}
                         {hasSubscriptionOption && !item.isSubscription && (
                           <ProductSubscriptionOption>
                             <SubscriptionToggle
@@ -1472,7 +1408,6 @@ const SidebarCart = ({ isVisible, onClose, onCartUpdate }) => {
                           </ProductSubscriptionOption>
                         )}
 
-                        {/* Show option to remove subscription */}
                         {item.isSubscription && (
                           <ProductSubscriptionOption>
                             <SubscriptionToggle
@@ -1545,7 +1480,6 @@ const SidebarCart = ({ isVisible, onClose, onCartUpdate }) => {
                     </button>
                   </EmptyCartMessage>
                 )}
-                {/* Product Suggestions with modern design */}
                 {suggestedProducts.length > 0 && (
                   <SuggestionsSection>
                     <SuggestionHeader>You may also like</SuggestionHeader>

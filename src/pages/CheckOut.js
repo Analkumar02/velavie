@@ -16,7 +16,7 @@ const CheckoutContainer = styled.div`
     padding: 40px 0;
   }
   @media (max-width: 767px) {
-    padding: 20px;
+    padding: 20px 0;
   }
 `;
 

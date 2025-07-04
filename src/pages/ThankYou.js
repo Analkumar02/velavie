@@ -30,7 +30,10 @@ const TitleArea = styled.div`
     justify-content: center;
     gap: 16px;
     h2 {
-      font-size: 1.5rem;
+      text-align: center;
+      span {
+        display: block;
+      }
     }
   }
 `;
@@ -403,7 +406,6 @@ function ThankYou() {
     localStorage.removeItem("subscriptionSavings");
     sessionStorage.removeItem("cartItems");
     sessionStorage.removeItem("checkoutInProgress");
-    // Force update cart count in header
     window.dispatchEvent(
       new CustomEvent("cartCountUpdate", { detail: { cartCount: 0 } })
     );
@@ -414,12 +416,14 @@ function ThankYou() {
       <Container>
         <TitleArea>
           <h2>
+            Thanks for your order
             <span>#{orderNumber}</span>
           </h2>
           <BtnBlue href="">Track Order</BtnBlue>
         </TitleArea>
         <MessageBox>
-          <h5 style={{ display: "none" }}>{shipping.firstName || ""}</h5>
+          <h5>Hi {shipping.firstName || ""}</h5>
+          <p>We are delighted that you have found something you like!</p>
         </MessageBox>
         <OrderDetailsBox>
           <ShippingDetails>

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Container from "./Container";
 import { useImagePath } from "../context/ImagePathContext";
-import { Link } from "react-router-dom"; // For homepage link
+import { Link } from "react-router-dom";
 import { Icon } from "@iconify/react";
 
 const FooterWrapper = styled.footer``;

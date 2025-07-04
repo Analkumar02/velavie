@@ -26,6 +26,9 @@ const ProductBox = styled.div`
     text-align: center;
     color: ${({ theme }) => theme.colors.primary};
   }
+  @media (max-width: 767px) {
+    gap: 20px;
+  }
 `;
 
 const StyledSwiper = styled(Swiper)`
@@ -107,7 +110,7 @@ const StyledSwiper = styled(Swiper)`
 
   @media (max-width: 768px) {
     .swiper-wrapper {
-      padding: 2rem 0 6rem;
+      padding: 0 0 6rem;
     }
 
     .swiper-button-next,

@@ -113,9 +113,6 @@ const DemoAddButton = styled.button`
   }
 `;
 
-/**
- * DemoProductSection component displays a demo product that can be added to the cart
- */
 const DemoProductSection = ({ imagePath, handleAddDemoProduct }) => {
   return (
     <DemoProductSectionWrapper>

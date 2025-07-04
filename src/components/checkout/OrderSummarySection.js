@@ -43,9 +43,6 @@ const OrderSummaryTitle = styled.h2`
   color: #333;
 `;
 
-/**
- * OrderSummarySection component displays the order summary sidebar
- */
 const OrderSummarySection = ({
   cartItems,
   imagePath,
@@ -117,7 +114,6 @@ const OrderSummarySection = ({
         ))
       )}
 
-      {/* Coupon Section */}
       <CouponSection
         formData={formData}
         handleInputChange={(e) => {
@@ -133,7 +129,6 @@ const OrderSummarySection = ({
         hasOneTimePurchaseProducts={hasOneTimePurchaseProducts}
       />
 
-      {/* Demo Product Section - Only show if no demo product is in cart */}
       {!hasDemoProduct && (
         <DemoProductSection
           imagePath={imagePath}
@@ -141,7 +136,6 @@ const OrderSummarySection = ({
         />
       )}
 
-      {/* Subscription Upgrade Section */}
       <SubscriptionUpgrade
         subscriptionUpgraded={subscriptionUpgraded}
         subscriptionSavings={subscriptionSavings}
@@ -168,7 +162,6 @@ const OrderSummarySection = ({
         getShippingMethodName={getShippingMethodName}
       />
 
-      {/* Trust Badges Section */}
       <div style={{ marginTop: "2rem", textAlign: "center" }}>
         <TrustBadges imagePath={imagePath} />
       </div>

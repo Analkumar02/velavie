@@ -10,7 +10,6 @@ import {
   MobileMenuSocialIconLink,
 } from "./HeaderStyled";
 
-// Desktop menu structure (sync with Header.js)
 const menuItems = [
   { label: "Shop", to: "/shop" },
   { label: "Benefit", to: "#benefit" },

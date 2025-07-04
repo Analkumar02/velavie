@@ -18,8 +18,7 @@ const ShopHeroBox = styled.div`
     gap: 0;
     padding: 20px 0;
     flex-direction: column;
-    align-items: center;
-    text-align: center;
+    align-items: flex-start;
   }
 `;
 
@@ -31,6 +30,7 @@ const HeroContent = styled.div`
   align-items: flex-start;
   @media (max-width: 1024px) {
     align-items: center;
+    padding: 20px 0;
   }
 `;
 
@@ -61,7 +61,9 @@ const RatingText = styled.div`
     max-height: 24px;
   }
   @media (max-width: 767px) {
-    flex-direction: column;
+    img {
+      max-height: 20px;
+    }
   }
 `;
 
@@ -106,6 +108,7 @@ const ShopIconBox = styled.div`
     grid-template-rows: repeat(2, 1fr);
     row-gap: 40px;
     column-gap: 20px;
+    justify-self: stretch;
   }
 `;
 

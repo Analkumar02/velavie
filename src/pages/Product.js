@@ -609,7 +609,6 @@ const AddToCartBtnWrapper = styled.div`
   max-width: 170px;
 `;
 
-// Styled components for the suggestion section
 const SuggestionSection = styled.section`
   margin: 0 0 0 0;
   width: 100%;
@@ -672,7 +671,6 @@ const FaqBox = styled.div`
   max-width: 700px;
 `;
 
-// FAQ styled components (no css on h4 or p)
 const FaqItem = styled.div`
   border-bottom: 1px solid ${({ theme }) => theme.colors.gray_lite};
   overflow: hidden;
@@ -729,7 +727,6 @@ const Product = () => {
   const faqRefs = useRef([]);
   const swiperRef = useRef(null);
 
-  // Ensure refs array is always correct length
   useEffect(() => {
     if (product.faq) {
       faqRefs.current = Array(product.faq.length)
@@ -738,7 +735,6 @@ const Product = () => {
     }
   }, [product.faq]);
 
-  // Update heights when FAQ open state or FAQ data changes
   useEffect(() => {
     setFaqHeights(faqRefs.current.map((ref) => ref.current?.scrollHeight || 0));
   }, [faqOpen, product.faq]);
@@ -1260,7 +1256,6 @@ const Product = () => {
                     $expanded={faqOpen === idx}
                     $height={faqOpen === idx ? faqHeights[idx] || 0 : 0}
                   >
-                    {/* Always render FaqBodyContent and attach ref correctly */}
                     <FaqBodyContent
                       $expanded={faqOpen === idx}
                       ref={faqRefs.current[idx]}

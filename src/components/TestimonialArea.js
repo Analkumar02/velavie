@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 const TestimonialSlider = styled.div`
   margin-top: 50px;
+  overflow-x: hidden;
   @media (max-width: 991px) {
     margin-top: 30px;
   }
@@ -98,13 +99,13 @@ function TestimonialArea({ testimonials, imagePath }) {
     const slide = track.children[0];
     if (!slide) return;
     setSlideWidth(slide.offsetWidth);
-    setTrackWidth(track.scrollWidth / 2); // since we duplicate
+    setTrackWidth(track.scrollWidth / 2);
   }, [testimonials]);
 
   React.useEffect(() => {
     let animationId;
     let pos = 0;
-    const speed = 0.5; // px per frame, adjust for slower/faster
+    const speed = 0.5;
     function animate() {
       pos += speed;
       if (pos >= trackWidth) pos = 0;
@@ -117,7 +118,6 @@ function TestimonialArea({ testimonials, imagePath }) {
     return () => cancelAnimationFrame(animationId);
   }, [trackWidth]);
 
-  // Duplicate slides for seamless loop
   const slides = [...testimonials, ...testimonials];
 
   return (

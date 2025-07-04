@@ -1,7 +1,6 @@
 import React from "react";
 import styled, { keyframes } from "styled-components";
 
-// Animations
 const spin = keyframes`
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
@@ -23,7 +22,6 @@ const slideIn = keyframes`
   }
 `;
 
-// Styled Components
 const LoadingOverlay = styled.div`
   position: fixed;
   top: 0;
@@ -85,7 +83,6 @@ const LoadingSubtext = styled.div`
   animation: ${pulse} 2s ease-in-out infinite 0.5s;
 `;
 
-// Loading component for full-page overlays (like checkout)
 export const FullPageLoader = ({
   message = "Updating cart...",
   subtext = "Please wait while we process your changes...",
@@ -102,7 +99,6 @@ export const FullPageLoader = ({
   );
 };
 
-// Loading component for sidebar/smaller areas
 export const SidebarLoader = ({
   message = "Updating cart...",
   isVisible = true,
@@ -126,7 +122,6 @@ export const SidebarLoader = ({
   );
 };
 
-// Inline loading component for buttons
 export const ButtonLoader = ({ size = 16 }) => (
   <LoadingSpinner
     size="small"

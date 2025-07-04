@@ -21,6 +21,9 @@ const SlideWrapper = styled.div`
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.08), 0 1.5px 6px rgba(0, 0, 0, 0.04);
     transform: scale(1.03);
   }
+  @media (max-width: 767px) {
+    padding: 0;
+  }
 `;
 
 const SlideImage = styled.img`

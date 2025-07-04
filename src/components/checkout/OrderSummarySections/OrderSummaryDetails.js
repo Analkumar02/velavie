@@ -43,9 +43,6 @@ const getDisplayShippingMethodName = (method) => {
   return method;
 };
 
-/**
- * OrderSummaryDetails component displays the price breakdown for the order
- */
 const OrderSummaryDetails = ({
   subtotal,
   shipping,
