@@ -233,7 +233,7 @@ const ComparisonTable = () => {
 
   const tableData = [
     {
-      feature: "Increased energy",
+      feature: "Boosted Vitality",
       sugarShift: true,
       antibioticAntidote: false,
       idealImmunity: true,
@@ -241,7 +241,7 @@ const ComparisonTable = () => {
       heartCentered: false,
     },
     {
-      feature: "Stabilized blood sugar",
+      feature: "Regulated Sugar Levels",
       sugarShift: true,
       antibioticAntidote: false,
       idealImmunity: false,
@@ -249,7 +249,7 @@ const ComparisonTable = () => {
       heartCentered: false,
     },
     {
-      feature: "Better sleep (bacterial melatonin)",
+      feature: "Natural Sleep Support",
       sugarShift: true,
       antibioticAntidote: false,
       idealImmunity: true,
@@ -257,7 +257,7 @@ const ComparisonTable = () => {
       heartCentered: false,
     },
     {
-      feature: "Defense against foodborne pathogens",
+      feature: "Combat Harmful Bacteria",
       sugarShift: false,
       antibioticAntidote: true,
       idealImmunity: true,
@@ -265,7 +265,7 @@ const ComparisonTable = () => {
       heartCentered: false,
     },
     {
-      feature: "Improved mood",
+      feature: "Enhanced Mood",
       sugarShift: true,
       antibioticAntidote: false,
       idealImmunity: true,
@@ -273,7 +273,7 @@ const ComparisonTable = () => {
       heartCentered: false,
     },
     {
-      feature: "Better oral health",
+      feature: "Improved Dental Health",
       sugarShift: false,
       antibioticAntidote: true,
       idealImmunity: false,
@@ -281,7 +281,7 @@ const ComparisonTable = () => {
       heartCentered: false,
     },
     {
-      feature: "Production of CoQ10 and Nitric Oxide",
+      feature: "Enhance Heart Function",
       sugarShift: false,
       antibioticAntidote: false,
       idealImmunity: false,
@@ -289,7 +289,7 @@ const ComparisonTable = () => {
       heartCentered: true,
     },
     {
-      feature: "Anti-fungal properties",
+      feature: "Anti-Fungal Support",
       sugarShift: false,
       antibioticAntidote: false,
       idealImmunity: false,
@@ -297,7 +297,7 @@ const ComparisonTable = () => {
       heartCentered: true,
     },
     {
-      feature: "A calming neurotransmitter",
+      feature: "Relaxing Brain Signal",
       sugarShift: false,
       antibioticAntidote: false,
       idealImmunity: false,
@@ -332,9 +332,7 @@ const ComparisonTable = () => {
           <StyledTable>
             <TableHead>
               <TableHeadRow>
-                <TableHeadCell>
-                  What does your body need help with?
-                </TableHeadCell>
+                <TableHeadCell>What’s your body asking for?</TableHeadCell>
                 <TableHeadCell>
                   <ProductName>Sugar Shift</ProductName>
                 </TableHeadCell>

@@ -68,7 +68,8 @@ const FeatureIcons = () => {
               alt="Feature 1"
             />
             <p>
-              Support the Immune <br></br>System
+              Strengthen <br />
+              Immunity
             </p>
           </FeatureIcon>
           <FeatureIcon>
@@ -82,7 +83,8 @@ const FeatureIcons = () => {
               alt="Feature 2"
             />
             <p>
-              Improve bowel <br></br>regularity
+              Support Bowel <br />
+              Function
             </p>
           </FeatureIcon>
           <FeatureIcon>
@@ -96,7 +98,8 @@ const FeatureIcons = () => {
               alt="Feature 3"
             />
             <p>
-              Optimize nutrient <br></br>absorption
+              Improve <br />
+              Assimilation
             </p>
           </FeatureIcon>
           <FeatureIcon>
@@ -110,7 +113,8 @@ const FeatureIcons = () => {
               alt="Feature 4"
             />
             <p>
-              Lower oxidative <br></br>stress
+              Minimize Cellular <br />
+              Stress
             </p>
           </FeatureIcon>
           <FeatureIcon>
@@ -124,7 +128,8 @@ const FeatureIcons = () => {
               alt="Feature 5"
             />
             <p>
-              detoxify heavy metals <br></br>and glyphosate
+              Eliminate <br />
+              Toxins
             </p>
           </FeatureIcon>
           <FeatureIcon>
@@ -138,7 +143,8 @@ const FeatureIcons = () => {
               alt="Feature 6"
             />
             <p>
-              strengthen gut <br></br>lining/ barrier
+              Strengthen <br />
+              Gut Lining
             </p>
           </FeatureIcon>
         </FeatureIconBox>

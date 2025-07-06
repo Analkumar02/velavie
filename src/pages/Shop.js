@@ -193,7 +193,7 @@ function Shop() {
                 alt="Shop 1"
                 loading="lazy"
               />
-              <p>Gluten-free</p>
+              <p>Gluten Free</p>
             </ShopIcon>
             <ShopIcon>
               <img
@@ -201,7 +201,7 @@ function Shop() {
                 alt="Shop 2"
                 loading="lazy"
               />
-              <p>Dairy-free</p>
+              <p>Lactose Free</p>
             </ShopIcon>
             <ShopIcon>
               <img
@@ -209,7 +209,7 @@ function Shop() {
                 alt="Shop 3"
                 loading="lazy"
               />
-              <p>Soy-free</p>
+              <p>Soy Free</p>
             </ShopIcon>
             <ShopIcon>
               <img
@@ -217,7 +217,7 @@ function Shop() {
                 alt="Shop 4"
                 loading="lazy"
               />
-              <p>Non-GMO</p>
+              <p>GMO-Free</p>
             </ShopIcon>
           </ShopIconBox>
         </Container>
