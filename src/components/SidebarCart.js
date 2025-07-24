@@ -58,7 +58,7 @@ const SidebarWrapper = styled.div.withConfig({
   background: ${({ theme }) => theme.colors.white};
   border-radius: 10px;
   padding: 10px;
-  max-height: calc(100vh - 20px);
+  max-height: calc(100% - 20px);
   box-shadow: -2px 0 16px rgba(44, 44, 44, 0.12);
   z-index: 2200;
   display: flex;
