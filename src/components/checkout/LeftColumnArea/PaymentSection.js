@@ -47,6 +47,7 @@ const formatExpiry = (value) => {
 const PaymentSection = ({
   formData,
   errors,
+  successes = {},
   focusedField,
   setFocusedField,
   handleInputChange,
@@ -149,6 +150,10 @@ const PaymentSection = ({
                   onChange={(e) => {
                     const raw = e.target.value.replace(/\D/g, "").slice(0, 16);
                     setFormData((prev) => ({ ...prev, cardNumber: raw }));
+                    // Trigger handleInputChange for validation
+                    handleInputChange({
+                      target: { name: "cardNumber", value: raw },
+                    });
                   }}
                   onFocus={() => setFocusedField("cardNumber")}
                   onBlur={() => setFocusedField(null)}
@@ -202,6 +207,19 @@ const PaymentSection = ({
                     {cardNumberError}
                   </div>
                 )}
+                {!cardNumberError &&
+                  successes.cardNumber &&
+                  formData.cardNumber.length === 16 && (
+                    <div
+                      style={{
+                        color: "#4CAF50",
+                        fontSize: "0.85rem",
+                        marginTop: 2,
+                      }}
+                    >
+                      Looks good!
+                    </div>
+                  )}
               </InputWrapper>
             </FormRow>
 
@@ -226,6 +244,10 @@ const PaymentSection = ({
                     if (raw.length > 2)
                       formatted = raw.slice(0, 2) + "/" + raw.slice(2);
                     setFormData((prev) => ({ ...prev, expiry: formatted }));
+                    // Trigger handleInputChange for validation
+                    handleInputChange({
+                      target: { name: "expiry", value: formatted },
+                    });
                   }}
                   onFocus={() => setFocusedField("expiry")}
                   onBlur={() => setFocusedField(null)}
@@ -261,6 +283,19 @@ const PaymentSection = ({
                     {expiryError}
                   </div>
                 )}
+                {!expiryError &&
+                  successes.expiry &&
+                  formData.expiry.length === 5 && (
+                    <div
+                      style={{
+                        color: "#4CAF50",
+                        fontSize: "0.85rem",
+                        marginTop: 2,
+                      }}
+                    >
+                      Looks good!
+                    </div>
+                  )}
               </InputWrapper>
 
               <InputWrapper>
@@ -280,6 +315,10 @@ const PaymentSection = ({
                   onChange={(e) => {
                     const raw = e.target.value.replace(/\D/g, "").slice(0, 3);
                     setFormData((prev) => ({ ...prev, cvv: raw }));
+                    // Trigger handleInputChange for validation
+                    handleInputChange({
+                      target: { name: "cvv", value: raw },
+                    });
                   }}
                   onFocus={() => setFocusedField("cvv")}
                   onBlur={() => setFocusedField(null)}
@@ -311,6 +350,17 @@ const PaymentSection = ({
                     }}
                   >
                     {errors.cvv}
+                  </div>
+                )}
+                {!errors.cvv && successes.cvv && formData.cvv.length === 3 && (
+                  <div
+                    style={{
+                      color: "#4CAF50",
+                      fontSize: "0.85rem",
+                      marginTop: 2,
+                    }}
+                  >
+                    Looks good!
                   </div>
                 )}
               </InputWrapper>
@@ -364,6 +414,19 @@ const PaymentSection = ({
                     {errors.cardName}
                   </div>
                 )}
+                {!errors.cardName &&
+                  successes.cardName &&
+                  formData.cardName.length > 0 && (
+                    <div
+                      style={{
+                        color: "#4CAF50",
+                        fontSize: "0.85rem",
+                        marginTop: 2,
+                      }}
+                    >
+                      Looks good!
+                    </div>
+                  )}
               </InputWrapper>
             </FormRow>
           </CardFormWrapper>

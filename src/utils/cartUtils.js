@@ -8,9 +8,7 @@ export const updateCartWithDelay = async (
   setLoadingMessage(message);
 
   try {
-    await new Promise((resolve) =>
-      setTimeout(resolve, Math.random() * 1000 + 1500)
-    );
+    await new Promise((resolve) => setTimeout(resolve, 100));
 
     const cartKey = getCartKey();
     localStorage.setItem(cartKey, JSON.stringify(updatedCartItems));

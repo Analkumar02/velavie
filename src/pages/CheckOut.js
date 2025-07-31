@@ -180,6 +180,29 @@ function CheckOut() {
     cvv: "",
   });
 
+  // Success state for each field
+  const [successes, setSuccesses] = useState({
+    email: false,
+    firstName: false,
+    lastName: false,
+    address1: false,
+    city: false,
+    state: false,
+    zipCode: false,
+    phone: false,
+    billingFirstName: false,
+    billingLastName: false,
+    billingAddress1: false,
+    billingCity: false,
+    billingState: false,
+    billingZipCode: false,
+    billingPhone: false,
+    cardName: false,
+    cardNumber: false,
+    expiry: false,
+    cvv: false,
+  });
+
   useEffect(() => {
     if (cartInitializedRef.current) {
       return;
@@ -383,6 +406,62 @@ function CheckOut() {
         ...prev,
         [name]: type === "checkbox" ? checked : value,
       };
+      // Validate and set success for the field
+      let valid = false;
+      switch (name) {
+        case "email":
+          valid = validateEmail(value);
+          break;
+        case "firstName":
+          valid = validateName(value);
+          break;
+        case "lastName":
+          valid = validateName(value);
+          break;
+        case "address1":
+          valid = validateAddress(value);
+          break;
+        case "city":
+          valid = validateCity(value);
+          break;
+        case "state":
+          valid = validateState(value);
+          break;
+        case "zipCode":
+          valid = validateZipCode(value);
+          break;
+        case "phone":
+          valid = validatePhone(value);
+          break;
+        case "cardName":
+          valid = validateName(value);
+          break;
+        case "cardNumber":
+          valid = validateCardNumber(value);
+          break;
+        case "expiry":
+          valid = isExpiryValid(value);
+          break;
+        case "cvv":
+          valid = value.length === 3;
+          break;
+        default:
+          valid = false;
+      }
+      setSuccesses((prev) => ({ ...prev, [name]: valid && value.length > 0 }));
+
+      // Clear error for this field if valid
+      if (valid && value.length > 0) {
+        setErrors((prev) => ({ ...prev, [name]: "" }));
+
+        // Clear specific error states for card fields
+        if (name === "cardNumber") {
+          setCardNumberError("");
+        }
+        if (name === "expiry") {
+          setExpiryError("");
+        }
+      }
 
       if (
         updated.sameShippingAddress &&
@@ -768,7 +847,7 @@ function CheckOut() {
     setIsProcessingOrder(true);
 
     try {
-      await new Promise((resolve) => setTimeout(resolve, 2000));
+      await new Promise((resolve) => setTimeout(resolve, 1000));
 
       const orderData = {
         cartItems,
@@ -934,6 +1013,7 @@ function CheckOut() {
               <LeftColumnSection
                 formData={formData}
                 errors={errors}
+                successes={successes}
                 focusedField={focusedField}
                 setFocusedField={setFocusedField}
                 handleInputChange={handleInputChange}

@@ -40,6 +40,7 @@ const OrDivider = styled.div`
 const LeftColumnSection = ({
   formData,
   errors,
+  successes,
   focusedField,
   setFocusedField,
   handleInputChange,
@@ -61,6 +62,7 @@ const LeftColumnSection = ({
       <ContactSection
         formData={formData}
         errors={errors}
+        successes={successes}
         focusedField={focusedField}
         setFocusedField={setFocusedField}
         handleInputChange={handleInputChange}
@@ -69,6 +71,7 @@ const LeftColumnSection = ({
       <ShippingSection
         formData={formData}
         errors={errors}
+        successes={successes}
         focusedField={focusedField}
         setFocusedField={setFocusedField}
         handleInputChange={handleInputChange}
@@ -83,6 +86,7 @@ const LeftColumnSection = ({
       <PaymentSection
         formData={formData}
         errors={errors}
+        successes={successes}
         focusedField={focusedField}
         setFocusedField={setFocusedField}
         handleInputChange={handleInputChange}

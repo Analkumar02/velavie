@@ -12,6 +12,7 @@ import {
 const ShippingSection = ({
   formData,
   errors,
+  successes,
   focusedField,
   setFocusedField,
   handleInputChange,
@@ -86,6 +87,19 @@ const ShippingSection = ({
               {errors.firstName}
             </div>
           )}
+          {!errors.firstName &&
+            successes.firstName &&
+            formData.firstName.length > 0 && (
+              <div
+                style={{
+                  color: "#4CAF50",
+                  fontSize: "0.85rem",
+                  marginTop: 2,
+                }}
+              >
+                Looks good!
+              </div>
+            )}
         </InputWrapper>
         <InputWrapper className={errors.lastName ? "error-field" : ""}>
           <InputLabel
@@ -125,6 +139,19 @@ const ShippingSection = ({
               {errors.lastName}
             </div>
           )}
+          {!errors.lastName &&
+            successes.lastName &&
+            formData.lastName.length > 0 && (
+              <div
+                style={{
+                  color: "#4CAF50",
+                  fontSize: "0.85rem",
+                  marginTop: 2,
+                }}
+              >
+                Looks good!
+              </div>
+            )}
         </InputWrapper>
       </FormRow>
 
@@ -166,6 +193,19 @@ const ShippingSection = ({
             {errors.address1}
           </div>
         )}
+        {!errors.address1 &&
+          successes.address1 &&
+          formData.address1.length > 0 && (
+            <div
+              style={{
+                color: "#4CAF50",
+                fontSize: "0.85rem",
+                marginTop: 2,
+              }}
+            >
+              Looks good!
+            </div>
+          )}
       </InputWrapper>
 
       <InputWrapper>
@@ -230,6 +270,17 @@ const ShippingSection = ({
               }}
             >
               {errors.city}
+            </div>
+          )}
+          {!errors.city && successes.city && formData.city.length > 0 && (
+            <div
+              style={{
+                color: "#4CAF50",
+                fontSize: "0.85rem",
+                marginTop: 2,
+              }}
+            >
+              Looks good!
             </div>
           )}
         </InputWrapper>
@@ -312,6 +363,28 @@ const ShippingSection = ({
             <option value="WI">Wisconsin</option>
             <option value="WY">Wyoming</option>
           </Select>
+          {errors.state && (
+            <div
+              style={{
+                color: "#e53935",
+                fontSize: "0.85rem",
+                marginTop: 2,
+              }}
+            >
+              {errors.state}
+            </div>
+          )}
+          {!errors.state && successes && successes.state && formData.state && (
+            <div
+              style={{
+                color: "#4CAF50",
+                fontSize: "0.85rem",
+                marginTop: 2,
+              }}
+            >
+              Looks good!
+            </div>
+          )}
         </InputWrapper>
         <InputWrapper className={errors.zipCode ? "error-field" : ""}>
           <InputLabel
@@ -365,6 +438,19 @@ const ShippingSection = ({
               {errors.zipCode}
             </div>
           )}
+          {!errors.zipCode &&
+            successes.zipCode &&
+            formData.zipCode.length > 0 && (
+              <div
+                style={{
+                  color: "#4CAF50",
+                  fontSize: "0.85rem",
+                  marginTop: 2,
+                }}
+              >
+                Looks good!
+              </div>
+            )}
         </InputWrapper>
       </FormRow>
 
@@ -415,6 +501,17 @@ const ShippingSection = ({
             }}
           >
             {errors.phone}
+          </div>
+        )}
+        {!errors.phone && successes.phone && formData.phone.length > 0 && (
+          <div
+            style={{
+              color: "#4CAF50",
+              fontSize: "0.85rem",
+              marginTop: 2,
+            }}
+          >
+            Looks good!
           </div>
         )}
       </InputWrapper>

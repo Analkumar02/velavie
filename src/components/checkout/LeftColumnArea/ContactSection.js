@@ -17,6 +17,7 @@ const SectionHeader = styled.div`
 const ContactSection = ({
   formData,
   errors,
+  successes,
   focusedField,
   setFocusedField,
   handleInputChange,
@@ -63,6 +64,17 @@ const ContactSection = ({
             }}
           >
             {errors.email}
+          </div>
+        )}
+        {!errors.email && successes.email && formData.email.length > 0 && (
+          <div
+            style={{
+              color: "#4CAF50",
+              fontSize: "0.85rem",
+              marginTop: 2,
+            }}
+          >
+            Looks good!
           </div>
         )}
       </InputWrapper>

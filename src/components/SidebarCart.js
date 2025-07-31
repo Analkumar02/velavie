@@ -72,6 +72,7 @@ const SidebarWrapper = styled.div.withConfig({
       : css`
           ${slideOut} 0.3s forwards
         `};
+  overflow: visible;
 
   @media (max-width: 600px) {
     position: fixed;
@@ -95,7 +96,7 @@ const SidebarWrapper = styled.div.withConfig({
         : css`
             ${slideOutMobile} 0.3s forwards
           `};
-    overflow-x: hidden;
+    overflow: visible;
   }
 `;
 
